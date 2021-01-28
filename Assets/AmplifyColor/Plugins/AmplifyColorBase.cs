@@ -12,9 +12,9 @@ public class AmplifyColorBase : MonoBehaviour
     private ColorSpace colorSpace = ColorSpace.Uninitialized;
     internal bool JustCopy;
     public Texture2D LutTexture;
-    private Texture lutTexture3d = new Texture();
+    private Texture lutTexture3d;
     public Texture2D LutBlendTexture;
-    private Texture lutBlendTexture3d = new Texture();
+    private Texture lutBlendTexture3d;
     public Texture MaskTexture; 
     private Material materialBase;
     private Material materialBlend;
@@ -190,7 +190,7 @@ public class AmplifyColorBase : MonoBehaviour
         else
         {
             Material materialBlendMask;
-            int pass = !base.GetComponent<Camera>().hdr ? 0 : 1;
+            int pass = !base.GetComponent<Camera>().allowHDR ? 0 : 1;
             bool flag3 = !(this.BlendAmount == 0f);
             bool flag4 = flag3 || (flag3 && ((this.LutBlendTexture != null) || (this.lutBlendTexture3d != null)));
             bool flag5 = flag4 && !this.use3d;

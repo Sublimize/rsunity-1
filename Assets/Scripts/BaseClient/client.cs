@@ -8359,8 +8359,8 @@ if(base.mouseX > 5 && base.mouseY > myHeight - 22 && base.mouseX < 516 && base.m
 
 	public override void startUp() {
 		drawLoadingText(20, "Starting up");
-		bool policyOK = Security.PrefetchSocketPolicy(serverIP, 43593);
-		UnityEngine.Debug.Log("Policy ok? : " + policyOK);
+		//bool policyOK = Security.PrefetchSocketPolicy(serverIP, 43593);
+		//UnityEngine.Debug.Log("Policy ok? : " + policyOK);
 		if (signlink.sunjava)
 			base.minDelay = 5;
 		aBoolean993 = true;
@@ -13847,7 +13847,7 @@ return null;
 					name = inStream.readString();
 					message = inStream.readString();
 					clanname = inStream.readString();
-					rights = inStream.readUnsignedWord();
+					int rights = inStream.readUnsignedWord();
 					pushMessage(message, 16, name);
 				} catch(Exception e) {
 					Debug.Log(e.Message);
@@ -14237,9 +14237,10 @@ return null;
 				
 			case 253:
 				String s = inStream.readString();
+				String text;
 				//if(consoleOpen)
 				//	printConsoleMessage(s, 1);
-				if(s.EndsWith(":tradereq:")) {
+					if (s.EndsWith(":tradereq:")) {
 					String s3 = s.Substring(0, s.IndexOf(":"));
 					long l17 = TextClass.longForName(s3);
 					bool flag2 = false;
@@ -14255,7 +14256,7 @@ return null;
 					long l18 = TextClass.longForName(s4);
 					pushMessage("Clan: ", 8, s4);	
 				} else if(s.EndsWith("#url#")) {
-					String text = s.Substring(0, s.IndexOf("-"));
+					text = s.Substring(0, s.IndexOf("-"));
 					s = s.Substring(text.Length+1).Trim();
 					String link = s.Substring(0, s.IndexOf("#"));
 					pushMessage(text, 9, link);
@@ -14437,7 +14438,7 @@ return null;
 			case 196:
 				long l5 = inStream.readQWord();
 				int j18 = inStream.readDWord();
-				int rights = inStream.readUnsignedByte();
+				rights = inStream.readUnsignedByte();
 				bool flag5 = false;
 				for(int i28 = 0; i28 < 100; i28++) {
 					if(anIntArray1240[i28] != j18)
@@ -14548,7 +14549,7 @@ return null;
 				return true;
 				
 			case 126:
-				String text = inStream.readString();
+				text = inStream.readString();
 				int frame = inStream.method435();
 				if (text.StartsWith("www.")) {
 					//openURL(text);

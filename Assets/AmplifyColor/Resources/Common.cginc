@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Amplify Color - Advanced Color Grading for Unity Pro
 // Copyright (c) Amplify Creations, Lda <info@amplify.pt>
 
@@ -24,7 +26,7 @@ struct v2f
 v2f vert( appdata_img v ) 
 {
 	v2f o;
-	o.pos = mul( UNITY_MATRIX_MVP, v.vertex );
+	o.pos = UnityObjectToClipPos( v.vertex );
 	o.uv = v.texcoord.xy;
 	o.uv1 = v.texcoord.xy;
 #if SHADER_API_D3D9 || SHADER_API_D3D11 || SHADER_API_D3D11_9X || SHADER_API_XBOX360

@@ -77,7 +77,7 @@ public abstract class TOD_ImageEffect : MonoBehaviour
 
 		if (needHdr)
 		{
-			cam.hdr = true;
+			cam.allowHDR = true;
 		}
 
 		return true;

@@ -27,7 +27,7 @@ public class TOD_Camera : MonoBehaviour
 
 	internal bool HDR
 	{
-		get { return cameraComponent ? cameraComponent.hdr : false; }
+		get { return cameraComponent ? cameraComponent.allowHDR : false; }
 	}
 
 	private Camera cameraComponent = null;

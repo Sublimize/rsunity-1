@@ -225,7 +225,7 @@ public class MassiveFlockingExample : MonoBehaviour
         ParticleSystem.Particle particle = new ParticleSystem.Particle();
         particle.position = flockers[index].position;
         particle.startLifetime = float.MaxValue;
-        particle.lifetime = float.MaxValue;
+        particle.remainingLifetime = float.MaxValue;
         particle.size = ParticleSize;
         particle.color = Color.white;
         storeTo[index] = particle;
@@ -318,7 +318,7 @@ public class MassiveFlockingExample : MonoBehaviour
 		
             //--------------- Update assosiated particle --------------------
             particles[i].position = flock.position;
-            particles[i].lifetime = float.MaxValue;
+            particles[i].remainingLifetime = float.MaxValue;
             particles[i].color = flock.currentColor;
             particles[i].size = ParticleSize;
             //--------------- Update assosiated particle --------------------
